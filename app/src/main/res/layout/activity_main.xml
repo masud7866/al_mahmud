@@ -77,7 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_animate"
-            android:text="এপ্লিকেশন সম্পর্কিত"
+            android:text="আমাদের কথা"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="#FFFFFF"
