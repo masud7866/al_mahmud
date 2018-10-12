@@ -33,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button certificate = findViewById(R.id.certificate);
+        certificate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,CertificateActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
         Button about = findViewById(R.id.about);
         about.setOnClickListener(new View.OnClickListener() {
             @Override

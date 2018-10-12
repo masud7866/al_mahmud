@@ -32,9 +32,12 @@
         <activity
             android:name=".HadithActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SchoolActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CertificateActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"></activity>
     </application>
