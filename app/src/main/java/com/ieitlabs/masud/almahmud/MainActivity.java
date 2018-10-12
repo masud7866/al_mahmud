@@ -13,7 +13,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setTitle("আল মাহমুদ");
+        setTitle("আল মাহমুদ ২০১৮ ইং");
+
+        Button hadith = findViewById(R.id.hadith);
+        hadith.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,HadithActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
 
         Button about = findViewById(R.id.about);
         about.setOnClickListener(new View.OnClickListener() {
@@ -29,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 finish();
                 System.exit(0);
             }

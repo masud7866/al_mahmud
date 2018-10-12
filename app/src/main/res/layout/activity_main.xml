@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_animate"
-            android:text="ফারেগীন"
+            android:text="ফারেগীন ২০১৮ ইং"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="#FFFFFF"
