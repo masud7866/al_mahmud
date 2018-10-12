@@ -29,7 +29,14 @@
             android:name=".AboutActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-        <activity android:name=".HadithActivity"></activity>
+        <activity
+            android:name=".HadithActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SchoolActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -36,7 +36,7 @@ public class TitleAdapter extends ExpandableRecyclerAdapter<TitleParentViewHolde
     @Override
     public void onBindParentViewHolder(TitleParentViewHolder TitleParentViewHolder, int i, Object o) {
         TitleParent title = (TitleParent) o;
-        TitleParentViewHolder._textView.setText(title.getTitle());
+        TitleParentViewHolder._textView.setText(Html.fromHtml(title.getTitle()));
 
     }
 

@@ -15,6 +15,15 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("আল মাহমুদ ২০১৮ ইং");
 
+        Button school = findViewById(R.id.school);
+        school.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SchoolActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
         Button hadith = findViewById(R.id.hadith);
         hadith.setOnClickListener(new View.OnClickListener() {
             @Override
