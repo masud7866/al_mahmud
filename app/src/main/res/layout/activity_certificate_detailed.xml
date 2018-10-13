@@ -16,7 +16,8 @@
         android:layout_alignParentTop="true"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="center"/>
 
     <Button
         android:id="@+id/order"
