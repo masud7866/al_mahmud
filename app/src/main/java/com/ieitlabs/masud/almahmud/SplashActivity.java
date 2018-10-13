@@ -39,6 +39,8 @@ public class SplashActivity extends AppCompatActivity {
 
         }, SPLASH_DURATION); // time in milliseconds (1 second = 1000 milliseconds) until the run() method will be called
 
+        (new DBManager(this)).CopyDB();
+
     }
 
     @Override
