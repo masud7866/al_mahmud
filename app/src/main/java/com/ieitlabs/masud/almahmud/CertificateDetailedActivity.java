@@ -20,11 +20,6 @@ public class CertificateDetailedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_certificate_detailed);
 
-        setTitle(val);
-
-
-
-
         if (getIntent().hasExtra("key") && getIntent().hasExtra("val"))
         {
             keyname =  getIntent().getExtras().get("key").toString();
@@ -32,6 +27,8 @@ public class CertificateDetailedActivity extends AppCompatActivity {
 
 
         }
+
+        setTitle(val);
 
          mDataset = (new DBManager(this)).getCertificate(keyname,true);
 
@@ -49,19 +46,17 @@ public class CertificateDetailedActivity extends AppCompatActivity {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(order.getText().toString().equals("অধঃক্রম")){
-                    order.setText("উর্ধ্বক্রম");
+                if(order.getText().toString().equals("অধঃক্রমে")){
+                    order.setText("উর্ধ্বক্রমে");
                     mDataset = (new DBManager(getApplicationContext())).getCertificate(keyname,false);
                 }
                 else {
                     mDataset = (new DBManager(getApplicationContext())).getCertificate(keyname,true);
-                    order.setText("অধঃক্রম");
+                    order.setText("অধঃক্রমে");
                 }
-                mAdapter = new CertificateDetailedViewAdapter(mDataset,getApplicationContext());
-
-                RVCertificateView.setAdapter(null);
-                RVCertificateView.setAdapter(mAdapter);
-                RVCertificateView.setLayoutManager(certLayoutManager);
+                CertificateDetailedViewAdapter adapter = (CertificateDetailedViewAdapter) RVCertificateView.getAdapter();
+                adapter.setmDataset(mDataset);
+                adapter.notifyDataSetChanged();
 
             }
         });

@@ -20,7 +20,7 @@ public class DBManager extends SQLiteOpenHelper{
     private SQLiteDatabase mDatabase;
 
     public DBManager(Context context) {
-        super(context, DBNAME, null, 3);
+        super(context, DBNAME, null, 4);
         this.mContext = context;
         DBLOCATION = context.getApplicationInfo().dataDir + "/databases/";
     }
@@ -66,7 +66,8 @@ public class DBManager extends SQLiteOpenHelper{
             if(f.exists())
             {
                 Log.d("DatabaseHelper","Database already exists in the "+OF+" directory");
-                return true;
+                f.delete();
+                f.createNewFile();
             }
             else
             {
@@ -94,8 +95,6 @@ public class DBManager extends SQLiteOpenHelper{
     }
 
     ArrayList<String> getCertificate(String key, Boolean order){
-
-        Log.d("DBManager",key);
         OpenDatabase();
         ArrayList<String> tmpStr = new  ArrayList<>();
         String orderText;

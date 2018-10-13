@@ -22,9 +22,14 @@ public class CertificateDetailedViewAdapter extends RecyclerView.Adapter<Certifi
         }
     }
 
-        public CertificateDetailedViewAdapter(ArrayList<String> myDataset, Context mContext) {
+    public void setmDataset(ArrayList<String> mDataset) {
+        this.mDataset = mDataset;
+    }
+
+    public CertificateDetailedViewAdapter(ArrayList<String> myDataset, Context mContext) {
             inflater = LayoutInflater.from(mContext);
             mDataset = myDataset;
+
             context = mContext;
         }
 
