@@ -22,7 +22,7 @@ public class DBManager extends SQLiteOpenHelper{
     public DBManager(Context context) {
         super(context, DBNAME, null, 3);
         this.mContext = context;
-        DBLOCATION = "data/data/"+ context.getPackageName() + "/databases/";
+        DBLOCATION = context.getApplicationInfo().dataDir + "/databases/";
     }
 
     @Override
@@ -44,10 +44,7 @@ public class DBManager extends SQLiteOpenHelper{
         {
             return;
         }
-        File file = new File(dbPath);
-        if (file.exists() && !file.isDirectory()){
-            Log.d("Ghum","Ashe");
-        }
+        mDatabase = SQLiteDatabase.openDatabase(dbPath,null,SQLiteDatabase.OPEN_READWRITE);
 
 
     }
