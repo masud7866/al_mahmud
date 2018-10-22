@@ -24,18 +24,6 @@
         app:layout_constraintVertical_bias="0.483">
 
         <Button
-            android:id="@+id/student"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_animate"
-            android:text="ফারেগীন ২০১৮ ইং"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:typeface="serif" />
-
-        <Button
             android:id="@+id/school"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,6 +60,18 @@
             android:typeface="serif" />
 
         <Button
+            android:id="@+id/student"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_animate"
+            android:text="ফারেগীন ২০১৮ ইং"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <Button
             android:id="@+id/about"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
@@ -85,12 +85,12 @@
             android:typeface="serif" />
 
         <Button
-            android:id="@+id/exit"
+            android:id="@+id/family"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_animate"
-            android:text="বাহির"
+            android:text="আল মাহমুদ পরিবার"
             android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="#FFFFFF"

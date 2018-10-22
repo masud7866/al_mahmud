@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button exit = findViewById(R.id.exit);
-        exit.setOnClickListener(new View.OnClickListener() {
+        Button family = findViewById(R.id.family);
+        family.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
-                finish();
-                System.exit(0);
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,FamilyActivity.class);
+                MainActivity.this.startActivity(intent);
             }
         });
     }
