@@ -121,4 +121,43 @@ public class DBManager extends SQLiteOpenHelper{
         return tmpStr;
     }
 
+    ArrayList<String> getDepartment(){
+        OpenDatabase();
+        ArrayList<String> tmpStr = new  ArrayList<>();
+        Cursor cur = mDatabase.rawQuery("SELECT DISTINCT department FROM student",null);
+        cur.moveToFirst();
+        for(int i =0;i<cur.getCount();i++)
+        {
+            tmpStr.add(cur.getString(0));
+            cur.moveToNext();
+        }
+        cur.close();
+
+        CloseDatabase();
+        return tmpStr;
+    }
+
+    ArrayList<String> getDivision(String department){
+        OpenDatabase();
+        ArrayList<String> tmpStr = new  ArrayList<>();
+        String whereText;
+        if (department== "জামাত..."){
+            whereText = "";
+        }
+        else {
+            whereText = " WHERE department = '"+department+"'";
+        }
+        Cursor cur = mDatabase.rawQuery("SELECT DISTINCT division FROM student"+whereText,null);
+        cur.moveToFirst();
+        for(int i =0;i<cur.getCount();i++)
+        {
+            tmpStr.add(cur.getString(0));
+            cur.moveToNext();
+        }
+        cur.close();
+
+        CloseDatabase();
+        return tmpStr;
+    }
+
 }
