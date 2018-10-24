@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DBManager extends SQLiteOpenHelper{
 
@@ -141,7 +142,7 @@ public class DBManager extends SQLiteOpenHelper{
         OpenDatabase();
         ArrayList<String> tmpStr = new  ArrayList<>();
         String whereText;
-        if (department== "জামাত..."){
+        if (department == "জামাত..."){
             whereText = "";
         }
         else {
@@ -155,6 +156,149 @@ public class DBManager extends SQLiteOpenHelper{
             cur.moveToNext();
         }
         cur.close();
+
+        CloseDatabase();
+        return tmpStr;
+    }
+
+    ArrayList<String> getDistrict(String department, String division){
+        OpenDatabase();
+        ArrayList<String> tmpStr = new ArrayList<>();
+        String whereText;
+        if (department == "জামাত..." && division == "বিভাগ..."){
+            whereText = "";
+        }
+        else if (department == "জামাত..." && division != "বিভাগ..."){
+            whereText = " WHERE division = '"+division+"'";
+        }
+        else if (department != "জামাত..." && division == "বিভাগ..."){
+            whereText = " WHERE department = '"+department+"'";
+        }
+        else {
+            whereText = " WHERE department = '"+department+"' AND division = '"+division+"'";
+        }
+        Cursor cur = mDatabase.rawQuery("SELECT DISTINCT district FROM student"+whereText,null);
+        cur.moveToFirst();
+        for(int i =0;i<cur.getCount();i++)
+        {
+            tmpStr.add(cur.getString(0));
+            cur.moveToNext();
+        }
+        cur.close();
+
+        CloseDatabase();
+        return tmpStr;
+    }
+
+    ArrayList<String> getSubDistrict(String department, String division, String district){
+        OpenDatabase();
+        ArrayList<String> tmpStr = new ArrayList<>();
+        String whereText;
+        if (department == "জামাত..." && division == "বিভাগ..." && district == "জেলা..."){
+            whereText = "";
+        }
+        else if (department == "জামাত..." && division != "বিভাগ..." && district == "জেলা..."){
+            whereText = " WHERE division = '"+division+"'";
+        }
+        else if (department != "জামাত..." && division == "বিভাগ..." && district == "জেলা..."){
+            whereText = " WHERE department = '"+department+"'";
+        }
+        else if (department == "জামাত..." && division == "বিভাগ..." && district != "জেলা..."){
+            whereText = " WHERE district = '"+district+"'";
+        }
+        else if (department != "জামাত..." && division != "বিভাগ..." && district == "জেলা..."){
+            whereText = " WHERE department = '"+department+"' AND division = '"+division+"'";
+        }
+        else if (department != "জামাত..." && division == "বিভাগ..." && district != "জেলা..."){
+            whereText = " WHERE department = '"+department+"' AND district = '"+district+"'";
+        }
+        else if (department == "জামাত..." && division != "বিভাগ..." && district != "জেলা..."){
+            whereText = " WHERE division = '"+division+"' AND district = '"+district+"'";
+        }
+        else {
+            whereText = " WHERE department = '"+department+"' AND division = '"+division+"' AND district = '"+district+"'";
+        }
+        Cursor cur = mDatabase.rawQuery("SELECT DISTINCT subdistrict FROM student"+whereText,null);
+        cur.moveToFirst();
+        for(int i =0;i<cur.getCount();i++)
+        {
+            tmpStr.add(cur.getString(0));
+            cur.moveToNext();
+        }
+        cur.close();
+
+        CloseDatabase();
+        return tmpStr;
+    }
+
+
+
+
+          ArrayList<ArrayList<String>> getOverview(String name, String department, String division, String district, String subdistrict){
+            OpenDatabase();
+            ArrayList<ArrayList<String>> tmpStr = new ArrayList<ArrayList<String>>();
+            String whereText = "";
+            if (!name.isEmpty()) whereText += " name LIKE '%"+name+"%'";
+            if (department != "জামাত..."){
+                if (whereText!= "")
+                {
+                    whereText += " AND department = '"+department+"'";
+                }
+                else
+                {
+                    whereText += "department = '"+department+"'";
+                }
+            }
+            if (division != "বিভাগ..."){
+                if (whereText!= "")
+                {
+                    whereText += " AND division = '"+division+"'";
+                }
+                else
+                {
+                    whereText += "division = '"+division+"'";
+                }
+            }
+            if (district != "জেলা...") {
+                if (whereText!= "")
+                {
+                    whereText += " AND district = '"+district+"'";
+                }
+                else
+                {
+                    whereText += "district = '"+district+"'";
+                }
+            }
+            if (subdistrict != "থানা...") {
+                if (whereText!= "")
+                {
+                    whereText += " AND subdistrict = '"+subdistrict+"'";
+                }
+                else
+                {
+                    whereText += "subdistrict = '"+subdistrict+"'";
+                }
+            }
+
+            if (whereText!= "") whereText = " WHERE " + whereText;
+            Log.d("DBMan", whereText);
+
+              Cursor cur = mDatabase.rawQuery("SELECT * FROM student"+whereText,null);
+              cur.moveToFirst();
+              for(int i =0;i<cur.getCount();i++)
+              {
+                  ArrayList<String> rowData = new ArrayList<>();
+                  rowData.add(cur.getString(0));
+                  rowData.add(cur.getString(3));
+                  rowData.add(cur.getString(5));
+                  rowData.add(cur.getString(7));
+                  rowData.add(cur.getString(8));
+
+                  tmpStr.add(rowData);
+                  cur.moveToNext();
+              }
+              cur.close();
+
 
         CloseDatabase();
         return tmpStr;
