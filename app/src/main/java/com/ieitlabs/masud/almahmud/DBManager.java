@@ -304,4 +304,27 @@ public class DBManager extends SQLiteOpenHelper{
         return tmpStr;
     }
 
+    ArrayList<String> getStudentInfo(String name,  String roll, String dept, String subdist, String dist){
+        OpenDatabase();
+        ArrayList<String> tmpStr = new ArrayList<>();
+        Cursor cur = mDatabase.rawQuery("SELECT * FROM student WHERE name = '"+name+"' AND roll = '"+roll+"' AND department = '"+dept+"' AND subdistrict = '"+subdist+"' AND district = '"+dist+"'",null);
+        cur.moveToFirst();
+        for(int i =0;i<cur.getCount();i++)
+        {
+            tmpStr.add(cur.getString(0));
+            tmpStr.add(cur.getString(1));
+            tmpStr.add(cur.getString(3));
+            tmpStr.add(cur.getString(4));
+            tmpStr.add(cur.getString(5));
+            tmpStr.add(cur.getString(6));
+            tmpStr.add(cur.getString(7));
+            tmpStr.add(cur.getString(8));
+            tmpStr.add(cur.getString(10));
+        }
+        cur.close();
+
+        CloseDatabase();
+        return tmpStr;
+    }
+
 }

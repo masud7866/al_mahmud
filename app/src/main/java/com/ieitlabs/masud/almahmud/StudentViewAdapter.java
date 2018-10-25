@@ -1,6 +1,8 @@
 package com.ieitlabs.masud.almahmud;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +20,11 @@ public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.
         public TextView mTextview1;
         public TextView mTextview2;
         public TextView mTextview3;
+        View mItemView;
 
         public StudentViewHolder(View itemView) {
             super(itemView);
+            mItemView = itemView;
             mTextview0 = itemView.findViewById(R.id.overview0);
             mTextview1 = itemView.findViewById(R.id.overview1);
             mTextview2 = itemView.findViewById(R.id.overview2);
@@ -48,14 +52,31 @@ public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.
     @Override
     public void onBindViewHolder( StudentViewAdapter.StudentViewHolder holder,  int position) {
 
-        ArrayList<String> rowData = mDataset.get(position);
+        final ArrayList<String> rowData = mDataset.get(position);
 
         holder.mTextview0.setText(rowData.get(2));
         holder.mTextview1.setText("রোলঃ "+rowData.get(1));
         holder.mTextview2.setText(rowData.get(0)+" বিভাগ");
         holder.mTextview3.setText(rowData.get(3)+", "+rowData.get(4));
 
+        holder.mItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,StudentDetailedActivity.class);
 
+                Bundle stu = new Bundle();
+                stu.putString("name",rowData.get(2));
+                stu.putString("roll",rowData.get(1));
+                stu.putString("dept",rowData.get(0));
+                stu.putString("subdist",rowData.get(3));
+                stu.putString("dist",rowData.get(4));
+
+                intent.putExtras(stu);
+                context.startActivity(intent);
+
+
+            }
+        });
     }
 
     @Override
