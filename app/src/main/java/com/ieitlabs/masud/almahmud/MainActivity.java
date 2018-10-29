@@ -1,6 +1,7 @@
 package com.ieitlabs.masud.almahmud;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         setTitle("আল মাহমুদ ২০১৮ ইং");
 
         Button school = findViewById(R.id.school);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+        school.setTypeface(custom_font);
         school.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button hadith = findViewById(R.id.hadith);
+        hadith.setTypeface(custom_font);
         hadith.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button certificate = findViewById(R.id.certificate);
+        certificate.setTypeface(custom_font);
         certificate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button about = findViewById(R.id.about);
+        about.setTypeface(custom_font);
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button family = findViewById(R.id.family);
+        family.setTypeface(custom_font);
         family.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -62,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button student = findViewById(R.id.student);
+        student.setTypeface(custom_font);
         student.setOnClickListener(new View.OnClickListener(){
 
             @Override

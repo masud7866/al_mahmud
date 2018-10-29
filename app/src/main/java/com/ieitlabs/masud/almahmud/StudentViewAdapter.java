@@ -2,6 +2,7 @@ package com.ieitlabs.masud.almahmud;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,6 +54,12 @@ public class StudentViewAdapter extends RecyclerView.Adapter<StudentViewAdapter.
     public void onBindViewHolder( StudentViewAdapter.StudentViewHolder holder,  int position) {
 
         final ArrayList<String> rowData = mDataset.get(position);
+
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+        holder.mTextview0.setTypeface(custom_font);
+        holder.mTextview1.setTypeface(custom_font);
+        holder.mTextview2.setTypeface(custom_font);
+        holder.mTextview3.setTypeface(custom_font);
 
         holder.mTextview0.setText(rowData.get(2));
         holder.mTextview1.setText("রোলঃ "+rowData.get(1));

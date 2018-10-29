@@ -13,8 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
+        android:textSize="20sp"
         android:text="TextView"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000000"
         android:textStyle="bold"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent" />
@@ -23,8 +24,9 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:text="TextView"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000000"
         android:padding="5dp"
         app:layout_constraintTop_toBottomOf="@id/dept_year" />
 
@@ -32,8 +34,9 @@
         android:id="@+id/father"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:text="TextView"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000000"
         android:padding="5dp"
         app:layout_constraintTop_toBottomOf="@id/name" />
 
@@ -41,8 +44,9 @@
         android:id="@+id/roll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:text="TextView"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000000"
         android:padding="5dp"
         app:layout_constraintTop_toBottomOf="@id/father" />
 
@@ -50,8 +54,9 @@
         android:id="@+id/group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:text="TextView"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000000"
         android:padding="5dp"
         app:layout_constraintTop_toBottomOf="@id/roll" />
 
@@ -59,8 +64,9 @@
         android:id="@+id/subdistrict"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:text="TextView"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000000"
         android:padding="5dp"
         app:layout_constraintTop_toBottomOf="@id/group" />
 
@@ -68,8 +74,9 @@
         android:id="@+id/district"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:text="TextView"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000000"
         android:padding="5dp"
         app:layout_constraintTop_toBottomOf="@id/subdistrict" />
 
@@ -77,8 +84,9 @@
         android:id="@+id/mobile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:text="TextView"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#000000"
         android:padding="5dp"
         app:layout_constraintTop_toBottomOf="@id/district" />
 
@@ -87,12 +95,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
-        android:text="কল"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/button_animate"
+        android:padding="5dp"
+        android:text="কল"
         android:textColor="#FFFFFF"
         android:typeface="serif"
-        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/sms"
         app:layout_constraintTop_toBottomOf="@id/mobile" />
@@ -101,15 +112,17 @@
         android:id="@+id/sms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
-        android:text="মেসেজ"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/button_animate"
+        android:padding="5dp"
+        android:text="মেসেজ"
         android:textColor="#FFFFFF"
         android:typeface="serif"
-        android:padding="5dp"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/call"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mobile" />
 </android.support.constraint.ConstraintLayout>

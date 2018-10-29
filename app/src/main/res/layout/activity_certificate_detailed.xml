@@ -15,9 +15,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="TextView"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAlignment="center"/>
+        android:textColor="#000000"
+        app:fontFamily="@fonts/SolaimanLipi_20-04-07" />
 
     <Button
         android:id="@+id/order"
@@ -36,6 +37,7 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:typeface="serif"
+        app:fontFamily="@fonts/SolaimanLipi_20-04-07"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/certificate_title" />

@@ -2,6 +2,7 @@ package com.ieitlabs.masud.almahmud;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,13 +27,25 @@ public class StudentSpinnerAdapter extends ArrayAdapter {
                                 ViewGroup parent) {
         View view = super.getDropDownView(position, convertView, parent);
         TextView tv = (TextView) view;
+        Typeface custom_font = Typeface.createFromAsset(mContext.getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
         if(position == 0){
             // Set the hint text color gray
             tv.setTextColor(Color.GRAY);
+            tv.setTypeface(custom_font);
         }
         else {
             tv.setTextColor(Color.BLACK);
+            tv.setTypeface(custom_font);
         }
         return view;
     }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        TextView view = (TextView) super.getView(position, convertView, parent);
+        Typeface custom_font = Typeface.createFromAsset(mContext.getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+        view.setTypeface(custom_font);
+        return view;
+    }
+
 }

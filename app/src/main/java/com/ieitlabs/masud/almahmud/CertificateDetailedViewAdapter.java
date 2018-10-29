@@ -1,6 +1,7 @@
 package com.ieitlabs.masud.almahmud;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,9 @@ public class CertificateDetailedViewAdapter extends RecyclerView.Adapter<Certifi
         }
         @Override
         public void onBindViewHolder( CertificateDetailedViewAdapter.CertificateDetailedViewHolder holder,  int position) {
+
+            final Typeface custom_font = Typeface.createFromAsset(context.getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+            holder.mTextview.setTypeface(custom_font);
 
             holder.mTextview.setText(mDataset.get(position));
 

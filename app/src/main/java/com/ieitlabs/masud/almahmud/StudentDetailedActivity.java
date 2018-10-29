@@ -2,6 +2,7 @@ package com.ieitlabs.masud.almahmud;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,32 +32,48 @@ public class StudentDetailedActivity extends AppCompatActivity {
         mDataset = (new DBManager(this)).getStudentInfo(name,roll,dept,subdist,dist);
 
         TextView dept_year = findViewById(R.id.dept_year);
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+        dept_year.setTypeface(custom_font);
         dept_year.setText(mDataset.get(0)+" সমাপনী "+mDataset.get(1));
 
         TextView name = findViewById(R.id.name);
+        name.setTypeface(custom_font);
         name.setText(mDataset.get(4));
 
         TextView father = findViewById(R.id.father);
+        father.setTypeface(custom_font);
         father.setText("পিতা: "+mDataset.get(5));
 
         TextView roll = findViewById(R.id.roll);
+        roll.setTypeface(custom_font);
         roll.setText("রোল: "+mDataset.get(2));
 
         TextView group = findViewById(R.id.group);
-        group.setText("গ্রুপ: "+mDataset.get(3));
+        group.setTypeface(custom_font);
+        if (mDataset.get(3).equals("")){
+            group.setVisibility(View.GONE);
+        }
+        else {
+            group.setText("গ্রুপ: "+mDataset.get(3));
+        }
 
         TextView subdistrict = findViewById(R.id.subdistrict);
+        subdistrict.setTypeface(custom_font);
         subdistrict.setText("থানা: "+mDataset.get(6));
 
         TextView district = findViewById(R.id.district);
+        district.setTypeface(custom_font);
         district.setText("জেলা: "+mDataset.get(7));
 
         TextView mobile = findViewById(R.id.mobile);
+        mobile.setTypeface(custom_font);
         mobile.setText("মোবাইল নম্বর: "+mDataset.get(8));
 
         final String number = mDataset.get(8);
 
         Button call = findViewById(R.id.call);
+        call.setTypeface(custom_font);
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +105,7 @@ public class StudentDetailedActivity extends AppCompatActivity {
 
 
         Button sms = findViewById(R.id.sms);
+        sms.setTypeface(custom_font);
         sms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

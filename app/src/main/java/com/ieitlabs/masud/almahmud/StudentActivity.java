@@ -1,5 +1,6 @@
 package com.ieitlabs.masud.almahmud;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -44,6 +45,8 @@ public class StudentActivity extends AppCompatActivity {
         RVStudentView.setAdapter(mAdapter);
 
         final EditText searchBar = findViewById(R.id.search_bar);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+        searchBar.setTypeface(custom_font);
 
         department_data = (new DBManager(this)).getDepartment();
         ArrayList<String> deptWithHint = new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.ieitlabs.masud.almahmud;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +34,10 @@ public class CertificateDetailedActivity extends AppCompatActivity {
          mDataset = (new DBManager(this)).getCertificate(keyname,true);
 
         TextView certificate_title = findViewById(R.id.certificate_title);
+
+        final Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+        certificate_title.setTypeface(custom_font);
+
         certificate_title.setText("১৪৩৮-৩৯ হিজরি মোতাবেক ২০১৭-১৮ইং শিক্ষাবর্ষে পঠিত "+val+" পাঠ সিলসিলা");
 
         final RecyclerView RVCertificateView = findViewById(R.id.certificate_detailed_recycler_view);
@@ -43,15 +48,18 @@ public class CertificateDetailedActivity extends AppCompatActivity {
         RVCertificateView.setAdapter(mAdapter);
 
         final Button order = findViewById(R.id.order);
+        order.setTypeface(custom_font);
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(order.getText().toString().equals("অধঃক্রমে")){
+                    order.setTypeface(custom_font);
                     order.setText("উর্ধ্বক্রমে");
                     mDataset = (new DBManager(getApplicationContext())).getCertificate(keyname,false);
                 }
                 else {
                     mDataset = (new DBManager(getApplicationContext())).getCertificate(keyname,true);
+                    order.setTypeface(custom_font);
                     order.setText("অধঃক্রমে");
                 }
                 CertificateDetailedViewAdapter adapter = (CertificateDetailedViewAdapter) RVCertificateView.getAdapter();

@@ -2,6 +2,7 @@ package com.ieitlabs.masud.almahmud;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -53,6 +54,8 @@ public class CertificateViewAdapter extends RecyclerView.Adapter<CertificateView
         // - replace the contents of the view with that element
 
         final Object[] keys = mDataset.keySet().toArray();
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+        holder.mTextView.setTypeface(custom_font);
         holder.mTextView.setText(mDataset.get(keys[position].toString()));
         holder.keyname = keys[position].toString();
 
