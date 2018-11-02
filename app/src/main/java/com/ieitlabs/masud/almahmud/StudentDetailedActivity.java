@@ -1,5 +1,8 @@
 package com.ieitlabs.masud.almahmud;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,12 +13,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class StudentDetailedActivity extends AppCompatActivity {
 
-    private String name, roll, dept, subdist, dist;
+    private String name, roll, dept, subdist, dist, clipData;
     private ArrayList<String> mDataset;
 
     @Override
@@ -71,6 +75,26 @@ public class StudentDetailedActivity extends AppCompatActivity {
         mobile.setText("মোবাইল নম্বর: "+mDataset.get(8));
 
         final String number = mDataset.get(8);
+
+        if(mDataset.get(3).equals("")){
+            clipData = dept_year.getText().toString()+"\n"+name.getText().toString()+"\n"+father.getText().toString()+"\n"+roll.getText().toString()+"\n"+subdistrict.getText().toString()+"\n"+district.getText().toString()+"\n"+mobile.getText().toString();
+        }
+        else {
+            clipData = dept_year.getText().toString()+"\n"+name.getText().toString()+"\n"+father.getText().toString()+"\n"+roll.getText().toString()+"\n"+group.getText().toString()+"\n"+subdistrict.getText().toString()+"\n"+district.getText().toString()+"\n"+mobile.getText().toString();
+        }
+
+        Button copy = findViewById(R.id.copy);
+        copy.setTypeface(custom_font);
+        copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("text", clipData);
+                clipboard.setPrimaryClip(clip);
+                Toast toast = Toast.makeText(getApplicationContext(),"লেখা কপি হয়েছে",Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
 
         Button call = findViewById(R.id.call);
         call.setTypeface(custom_font);
@@ -134,9 +158,5 @@ public class StudentDetailedActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
     }
 }
