@@ -281,9 +281,8 @@ public class DBManager extends SQLiteOpenHelper{
             }
 
             if (whereText!= "") whereText = " WHERE " + whereText;
-            Log.d("DBMan", whereText);
 
-              Cursor cur = mDatabase.rawQuery("SELECT * FROM student"+whereText,null);
+              Cursor cur = mDatabase.rawQuery("SELECT * FROM student"+whereText+" ORDER BY roll",null);
               cur.moveToFirst();
               for(int i =0;i<cur.getCount();i++)
               {
