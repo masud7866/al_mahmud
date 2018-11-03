@@ -58,17 +58,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button family = findViewById(R.id.family);
-        family.setTypeface(custom_font);
-        family.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,FamilyActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
-
         Button student = findViewById(R.id.student);
         student.setTypeface(custom_font);
         student.setOnClickListener(new View.OnClickListener(){
