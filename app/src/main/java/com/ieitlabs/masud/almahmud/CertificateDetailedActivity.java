@@ -1,10 +1,12 @@
 package com.ieitlabs.masud.almahmud;
 
 import android.graphics.Typeface;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +32,8 @@ public class CertificateDetailedActivity extends AppCompatActivity {
         }
 
         setTitle(val);
+        ActionBar myActionBar = getSupportActionBar();
+        myActionBar.setSubtitle(Html.fromHtml("<small>দাওরায়ে হাদিস, জামিয়া ইসলামিয়া দারুল উলূম মাদানিয়া, যাত্রাবাড়ী, ঢাকা</small>"));
 
          mDataset = (new DBManager(this)).getCertificate(keyname,true);
 

@@ -8,15 +8,30 @@
 
     <EditText
         android:id="@+id/search_bar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="নামের অংশবিশেষ..."
         android:inputType="textPersonName"
+        app:layout_constraintDimensionRatio="w,5:1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/search_roll"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/search_roll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:ems="10"
+        android:hint="রোল..."
+        android:inputType="textPersonName"
+        app:layout_constraintDimensionRatio="w,3:1"
+        app:layout_constraintLeft_toRightOf="@id/search_bar"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner

@@ -1,9 +1,11 @@
 package com.ieitlabs.masud.almahmud;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 
 import java.util.LinkedHashMap;
 
@@ -17,6 +19,8 @@ public class CertificateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_certificate);
 
         setTitle("হাদীসের সনদ");
+        ActionBar myActionBar = getSupportActionBar();
+        myActionBar.setSubtitle(Html.fromHtml("<small>দাওরায়ে হাদিস, জামিয়া ইসলামিয়া দারুল উলূম মাদানিয়া, যাত্রাবাড়ী, ঢাকা</small>"));
 
         LinkedHashMap<String,String> mDataset = new LinkedHashMap<>();
         mDataset.put("abu_daud_1","আবু দাউদ ১ম");

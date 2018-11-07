@@ -1,11 +1,13 @@
 package com.ieitlabs.masud.almahmud;
 
 import android.graphics.Typeface;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,8 +36,10 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student);
 
         setTitle("ফারেগীন ২০১৮ ইং");
+        ActionBar myActionBar = getSupportActionBar();
+        myActionBar.setSubtitle(Html.fromHtml("<small>জামিয়া ইসলামিয়া দারুল উলূম মাদানিয়া, যাত্রাবাড়ী, ঢাকা</small>"));
 
-        mDataset = (new DBManager(this)).getOverview("","জামাত...","বিভাগ...", "জেলা...","থানা...");
+        mDataset = (new DBManager(this)).getOverview("", "","জামাত...","বিভাগ...", "জেলা...","থানা...");
 
         RVStudentView = findViewById(R.id.student_recycler_view);
         LinearLayoutManager stLayoutManager = new LinearLayoutManager(this);
@@ -47,6 +51,9 @@ public class StudentActivity extends AppCompatActivity {
         final EditText searchBar = findViewById(R.id.search_bar);
         Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
         searchBar.setTypeface(custom_font);
+
+        final EditText searchRoll = findViewById(R.id.search_roll);
+        searchRoll.setTypeface(custom_font);
 
         department_data = (new DBManager(this)).getDepartment();
         ArrayList<String> deptWithHint = new ArrayList<>();
@@ -69,7 +76,7 @@ public class StudentActivity extends AppCompatActivity {
                 divWithHint.add("বিভাগ...");
                 divWithHint.addAll(division_data);
                 division_data = divWithHint;
-                mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),selectedDept,"বিভাগ...", "জেলা...","থানা...");
+                mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),searchRoll.getText().toString(),selectedDept,"বিভাগ...", "জেলা...","থানা...");
                 itemChanged();
 
                 final Spinner division = findViewById(R.id.division);
@@ -87,7 +94,7 @@ public class StudentActivity extends AppCompatActivity {
                         distWithHint.addAll(district_data);
                         district_data = distWithHint;
 
-                        mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),selectedDept,selectedDiv, "জেলা...","থানা...");
+                        mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),searchRoll.getText().toString(),selectedDept,selectedDiv, "জেলা...","থানা...");
                         itemChanged();
 
                         final Spinner district = findViewById(R.id.district);
@@ -105,7 +112,7 @@ public class StudentActivity extends AppCompatActivity {
                                 subdistWithHint.addAll(subdistrict_data);
                                 subdistrict_data = subdistWithHint;
 
-                                mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),selectedDept,selectedDiv, selectedDist,"থানা...");
+                                mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),searchRoll.getText().toString(),selectedDept,selectedDiv, selectedDist,"থানা...");
                                 itemChanged();
 
                                 final Spinner subdistrict = findViewById(R.id.subdistrict);
@@ -118,7 +125,7 @@ public class StudentActivity extends AppCompatActivity {
                                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                                         selectedSubDist = subdistrict_data.get(i);
 
-                                        mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),selectedDept,selectedDiv, selectedDist,selectedSubDist);
+                                        mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),searchRoll.getText().toString(),selectedDept,selectedDiv, selectedDist,selectedSubDist);
                                         itemChanged();
                                     }
 
@@ -150,7 +157,25 @@ public class StudentActivity extends AppCompatActivity {
 
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),selectedDept,selectedDiv, selectedDist,selectedSubDist);
+                        mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),searchRoll.getText().toString(),selectedDept,selectedDiv, selectedDist,selectedSubDist);
+                        itemChanged();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+
+                    }
+                });
+
+                searchRoll.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        mDataset = (new DBManager(StudentActivity.this)).getOverview(searchBar.getText().toString(),searchRoll.getText().toString(),selectedDept,selectedDiv, selectedDist,selectedSubDist);
                         itemChanged();
                     }
 

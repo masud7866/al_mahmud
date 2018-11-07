@@ -234,11 +234,19 @@ public class DBManager extends SQLiteOpenHelper{
 
 
 
-          ArrayList<ArrayList<String>> getOverview(String name, String department, String division, String district, String subdistrict){
+          ArrayList<ArrayList<String>> getOverview(String name, String roll, String department, String division, String district, String subdistrict){
             OpenDatabase();
             ArrayList<ArrayList<String>> tmpStr = new ArrayList<ArrayList<String>>();
             String whereText = "";
             if (!name.isEmpty()) whereText += " name LIKE '%"+name+"%'";
+            if (!roll.isEmpty()){
+                if (whereText!=""){
+                    whereText += " AND roll LIKE '%"+roll+"%'";
+                }
+                else {
+                    whereText += "roll LIKE '%"+roll+"%'";
+                }
+            }
             if (department != "জামাত..."){
                 if (whereText!= "")
                 {
@@ -312,6 +320,7 @@ public class DBManager extends SQLiteOpenHelper{
         {
             tmpStr.add(cur.getString(0));
             tmpStr.add(cur.getString(1));
+            tmpStr.add(cur.getString(2));
             tmpStr.add(cur.getString(3));
             tmpStr.add(cur.getString(4));
             tmpStr.add(cur.getString(5));

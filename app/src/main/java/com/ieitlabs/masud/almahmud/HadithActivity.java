@@ -1,9 +1,11 @@
 package com.ieitlabs.masud.almahmud;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 
 
 import com.bignerdranch.expandablerecyclerview.Model.ParentObject;
@@ -20,6 +22,8 @@ public class HadithActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hadith);
 
         setTitle("হাদীসগ্রন্থ পরিচিতি");
+        ActionBar myActionBar = getSupportActionBar();
+        myActionBar.setSubtitle(Html.fromHtml("<small>সংকলনে: দাওরায়ে হাদিস বিভাগ, জামিয়া ইসলামিয়া দারুল উলূম মাদানিয়া, যাত্রাবাড়ী, ঢাকা</small>"));
 
         recyclerView = findViewById(R.id.hadith_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

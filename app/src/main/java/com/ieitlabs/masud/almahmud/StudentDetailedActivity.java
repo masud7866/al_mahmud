@@ -39,44 +39,44 @@ public class StudentDetailedActivity extends AppCompatActivity {
 
         Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
         dept_year.setTypeface(custom_font);
-        dept_year.setText(mDataset.get(0)+" সমাপনী "+mDataset.get(1));
+        dept_year.setText(mDataset.get(0)+" সমাপনী "+mDataset.get(1)+"ইং/"+mDataset.get(2)+"হিঃ");
 
         TextView name = findViewById(R.id.name);
         name.setTypeface(custom_font);
-        name.setText(mDataset.get(4));
+        name.setText(mDataset.get(5));
 
         TextView father = findViewById(R.id.father);
         father.setTypeface(custom_font);
-        father.setText("পিতা: "+mDataset.get(5));
+        father.setText("পিতা: "+mDataset.get(6));
 
         TextView roll = findViewById(R.id.roll);
         roll.setTypeface(custom_font);
-        roll.setText("রোল: "+mDataset.get(2));
+        roll.setText("রোল: "+mDataset.get(3));
 
         TextView group = findViewById(R.id.group);
         group.setTypeface(custom_font);
-        if (mDataset.get(3).equals("")){
+        if (mDataset.get(4).equals("")){
             group.setVisibility(View.GONE);
         }
         else {
-            group.setText("গ্রুপ: "+mDataset.get(3));
+            group.setText("গ্রুপ: "+mDataset.get(4));
         }
 
         TextView subdistrict = findViewById(R.id.subdistrict);
         subdistrict.setTypeface(custom_font);
-        subdistrict.setText("থানা: "+mDataset.get(6));
+        subdistrict.setText("থানা: "+mDataset.get(7));
 
         TextView district = findViewById(R.id.district);
         district.setTypeface(custom_font);
-        district.setText("জেলা: "+mDataset.get(7));
+        district.setText("জেলা: "+mDataset.get(8));
 
         TextView mobile = findViewById(R.id.mobile);
         mobile.setTypeface(custom_font);
-        mobile.setText("মোবাইল নম্বর: "+mDataset.get(8));
+        mobile.setText("মোবাইল নম্বর: "+mDataset.get(9));
 
-        final String number = mDataset.get(8);
+        final String number = mDataset.get(9);
 
-        if(mDataset.get(3).equals("")){
+        if(mDataset.get(4).equals("")){
             clipData = dept_year.getText().toString()+"\n"+name.getText().toString()+"\n"+father.getText().toString()+"\n"+roll.getText().toString()+"\n"+subdistrict.getText().toString()+"\n"+district.getText().toString()+"\n"+mobile.getText().toString();
         }
         else {
