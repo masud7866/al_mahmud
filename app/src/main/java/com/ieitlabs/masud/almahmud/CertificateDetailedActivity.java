@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,9 @@ public class CertificateDetailedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_certificate_detailed);
 
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         if (getIntent().hasExtra("key") && getIntent().hasExtra("val"))
         {
             keyname =  getIntent().getExtras().get("key").toString();
@@ -35,11 +39,20 @@ public class CertificateDetailedActivity extends AppCompatActivity {
         ActionBar myActionBar = getSupportActionBar();
         myActionBar.setSubtitle(Html.fromHtml("<small>দাওরায়ে হাদিস, জামিয়া ইসলামিয়া দারুল উলূম মাদানিয়া, যাত্রাবাড়ী, ঢাকা</small>"));
 
-         mDataset = (new DBManager(this)).getCertificate(keyname,true);
+        final Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+
+        for(int i = 0; i < myToolbar.getChildCount(); i++) {
+            View view = myToolbar.getChildAt(i);
+            if(view instanceof TextView) {
+                TextView textView = (TextView) view;
+                textView.setTypeface(custom_font);
+            }
+        }
+
+        mDataset = (new DBManager(this)).getCertificate(keyname,true);
 
         TextView certificate_title = findViewById(R.id.certificate_title);
 
-        final Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
         certificate_title.setTypeface(custom_font);
 
         certificate_title.setText("১৪৩৮-৩৯ হিজরি মোতাবেক ২০১৭-১৮ইং শিক্ষাবর্ষে পঠিত "+val+" পাঠ সিলসিলা");

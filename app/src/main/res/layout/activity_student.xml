@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".StudentActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="#FFFFFF"
+        app:subtitleTextColor="#a9ffffff"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <EditText
         android:id="@+id/search_bar"
         android:layout_width="0dp"
@@ -18,7 +29,7 @@
         app:layout_constraintDimensionRatio="w,5:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/search_roll"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
 
     <EditText
         android:id="@+id/search_roll"
@@ -32,65 +43,55 @@
         app:layout_constraintDimensionRatio="w,3:1"
         app:layout_constraintLeft_toRightOf="@id/search_bar"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
 
     <Spinner
         android:id="@+id/department"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        app:layout_constraintDimensionRatio="w,8:1"
         app:layout_constraintEnd_toStartOf="@+id/division"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
     <Spinner
         android:id="@+id/division"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        app:layout_constraintDimensionRatio="w,7:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/department"
         app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
     <Spinner
         android:id="@+id/district"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        app:layout_constraintDimensionRatio="w,8:1"
         app:layout_constraintEnd_toStartOf="@+id/subdistrict"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/department" />
 
     <Spinner
         android:id="@+id/subdistrict"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        app:layout_constraintDimensionRatio="w,7:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/district"
         app:layout_constraintTop_toBottomOf="@+id/division" />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/student_recycler_view"
-        app:layout_constraintTop_toBottomOf="@id/district"
-        android:layout_marginTop="120dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/district" />
 
 </android.support.constraint.ConstraintLayout>

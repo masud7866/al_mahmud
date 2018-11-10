@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -35,9 +37,22 @@ public class StudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
 
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         setTitle("ফারেগীন ২০১৮ ইং");
         ActionBar myActionBar = getSupportActionBar();
         myActionBar.setSubtitle(Html.fromHtml("<small>জামিয়া ইসলামিয়া দারুল উলূম মাদানিয়া, যাত্রাবাড়ী, ঢাকা</small>"));
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+
+        for(int i = 0; i < myToolbar.getChildCount(); i++) {
+            View view = myToolbar.getChildAt(i);
+            if(view instanceof TextView) {
+                TextView textView = (TextView) view;
+                textView.setTypeface(custom_font);
+            }
+        }
 
         mDataset = (new DBManager(this)).getOverview("", "","জামাত...","বিভাগ...", "জেলা...","থানা...");
 
@@ -49,7 +64,6 @@ public class StudentActivity extends AppCompatActivity {
         RVStudentView.setAdapter(mAdapter);
 
         final EditText searchBar = findViewById(R.id.search_bar);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
         searchBar.setTypeface(custom_font);
 
         final EditText searchRoll = findViewById(R.id.search_roll);

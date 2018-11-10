@@ -6,9 +6,11 @@ import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,12 +19,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         setTitle("আল মাহমুদ ২০১৮ ইং");
         ActionBar myActionBar = getSupportActionBar();
         myActionBar.setSubtitle(Html.fromHtml("<small>জামিয়া ইসলামিয়া দারুল উলূম মাদানিয়া, যাত্রাবাড়ী, ঢাকা</small>"));
 
-        Button school = findViewById(R.id.school);
         Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SolaimanLipi_20-04-07.ttf");
+
+        for(int i = 0; i < myToolbar.getChildCount(); i++) {
+            View view = myToolbar.getChildAt(i);
+            if(view instanceof TextView) {
+                TextView textView = (TextView) view;
+                textView.setTypeface(custom_font);
+            }
+        }
+
+        Button school = findViewById(R.id.school);
         school.setTypeface(custom_font);
         school.setOnClickListener(new View.OnClickListener() {
             @Override
