@@ -19,7 +19,7 @@
 
     <WebView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:id="@+id/about"
         app:layout_constraintTop_toBottomOf="@id/my_toolbar"
         app:layout_constraintBottom_toTopOf="@id/family"/>
