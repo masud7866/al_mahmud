@@ -18,7 +18,8 @@
         android:textColor="#000000"
         android:textStyle="bold"
         android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/name"
